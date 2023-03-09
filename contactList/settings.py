@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'authentication'
+    'authentication',
+    "contacts",
 ]
 
 
@@ -86,8 +87,12 @@ WSGI_APPLICATION = 'contactList.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ContactList',
+        'USER': 'postgres',
+        'PASSWORD': 'Hussein2001',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -126,7 +131,7 @@ USE_TZ = True
 #JWT
 
 
-JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY')
+JWT_SECRET_KEY = "os.environ.get('JWT_SECRET_KEY')"
 
 
 
