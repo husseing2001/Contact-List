@@ -26,14 +26,13 @@ class LoginView(GenericAPIView):
 
     def post(self, request):
         data = request.data
-        username = data.get('username')
-        password = data.get('password')
+        username = data.get('username','')
+        password = data.get('password','')
 
         # Authentication using jwt
         user = auth.authenticate(username=username, password=password)
 
         if user:
-            user = user.username
             auth_token = jwt.encode({'username': user.username}, settings.JWT_SECRET_KEY, algorithm="HS256")
 
             serializer = UserSerializer(user)
